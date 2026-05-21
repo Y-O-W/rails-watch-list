@@ -1,0 +1,19 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Lists" %>
+
+<h1>Lists</h1>
+
+<div id="lists">
+  <% @lists.each do |list| %>
+    <%= render list %>
+    <p>
+      <%= link_to "See details", list_path(list), class: "btn btn-primary"%>
+    </p>
+  <% end %>
+</div>
+
+<i class="fas fa-user"></i>
+<i class="fa-solid fa-heart"></i>
+
+<%= link_to "New list", new_list_path, class: "btn btn-secondary" %>

@@ -1,0 +1,29 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>List - <%= @list.name %></h1>
+
+<div>
+  <h2>Movies for <%= @list.name %></h2>
+  <ul>
+    <% if @list.bookmarks.empty? %>
+      <p>You don't have any bookmarks yet.</p>
+    <% else %>
+      <% @bookmark.movies.each do |movie| %>
+        <%= render "card" %>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
+
+<div>
+  <%= link_to "Back to lists", lists_path, class: "btn btn-primary" %>
+</div>
+
+  <br>
+
+<div>
+  <h2>New bookmark for <%= @list.name %></h1>
+
+   <%= link_to "Create Bookmark", new_list_bookmark_path(@list), class: "btn btn-primary" %>
+  <%#= render "bookmarks/form", bookmark: [@list, @bookmark] %>
+</div>

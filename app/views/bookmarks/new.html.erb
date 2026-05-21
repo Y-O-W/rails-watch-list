@@ -1,0 +1,11 @@
+<% content_for :title, "New Bookmark" %>
+
+<h1>New Bookmark for <%= @list.name %></h1>
+
+<%= render "form", bookmark: [@list, @bookmark] %>
+
+<br>
+
+<div>
+  <%= link_to "Back to restaurants", restaurants_path, class: "btn btn-secondary" %>
+</div>
