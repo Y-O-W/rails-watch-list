@@ -4,26 +4,28 @@
 
 <div>
   <h2>Movies for <%= @list.name %></h2>
-  <ul>
-    <% if @list.bookmarks.empty? %>
-      <p>You don't have any bookmarks yet.</p>
-    <% else %>
-      <% @bookmark.movies.each do |movie| %>
-        <%= render "card" %>
-      <% end %>
+  <% if @list.bookmarks.empty? %>
+    <p>You don't have any bookmarks yet.</p>
+  <% else %>
+    <% @list.bookmarks.each do |bookmark| %>
+      <%= render "card", bookmark: bookmark %>
     <% end %>
-  </ul>
+  <% end %>
 </div>
+
+<br>
+
+<div>
+  <h2>Add a new bookmark</h2>
+  <%= simple_form_for [@list, @bookmark] do |f| %>
+    <%= f.input :comment %>
+    <%= f.association :movie, label_method: :title %>
+    <%= f.submit "Add Bookmark", class: "btn btn-primary" %>
+  <% end %>
+</div>
+
+<br>
 
 <div>
   <%= link_to "Back to lists", lists_path, class: "btn btn-primary" %>
-</div>
-
-  <br>
-
-<div>
-  <h2>New bookmark for <%= @list.name %></h1>
-
-   <%= link_to "Create Bookmark", new_list_bookmark_path(@list), class: "btn btn-primary" %>
-  <%#= render "bookmarks/form", bookmark: [@list, @bookmark] %>
 </div>

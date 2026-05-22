@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   # As a user, I can destroy a bookmark
   # Warning the movies will be seeded in the database so no need to implement any user action around the movie model.
   resources :lists, only: [ :index, :show, :new, :create ] do
-    resources :bookmarks, only: [ :new, :create ]
+    resources :bookmarks, only: [ :create ]
   end
 
   resources :bookmarks, only: [ :destroy ]
