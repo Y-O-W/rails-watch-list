@@ -3,6 +3,10 @@
     <strong>Title:</strong>
     <%= list.name %>
     <strong>Thumbnail:</strong>
-    <%= cl_image_tag @list.photo.key, height: 40, width: 40, crop: thumb %>
+    <% if list.photo.attached? %>
+      <%= cl_image_tag list.photo.key, height: 40, width: 40, crop: :thumb %>
+    <% else %>
+       <%= "No thumbnail." %>
+    <% end %>
   </div>
 </div>
